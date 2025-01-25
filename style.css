@@ -11,8 +11,8 @@ body {
 
 #image-container {
     display: flex;
-    width: 80%;
-    max-width: 1300px;
+    width: 100%;
+    max-width: 1500px;
     margin: auto;
     gap: 20px;
 }
@@ -23,7 +23,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    height: 370px;
+    height: 500px;
 }
 
 .image-box img {
@@ -46,14 +46,16 @@ body {
 #speed-control {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 40px;
     background-color: #16213e;
     padding: 15px;
     border-radius: 10px;
+    height: 40px;
+    font-size: 20px;
 }
 
 #speed-slider {
-    width: 300px;
+    width:500px;
     margin: 0 15px;
     appearance: none;
     background: #0f3460;
@@ -74,4 +76,100 @@ body {
     background: #4de6d9;
     cursor: pointer;
     border-radius: 50%;
+}
+
+
+/* Modified CSS */
+#controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 26, 46, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    max-width: 600px;
+    z-index: 100;
+}
+
+#playback-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+#pause-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #4de6d9;
+    color: #16213e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 21px;
+    line-height: 1;
+    width: 60px;
+    height: 50px;
+}
+
+#pause-btn:hover {
+    background: #3bc4b8;
+    transform: scale(1.05);
+}
+
+.custom-slider {
+    width: 100%;
+    height: 10px;
+    background: #0f3460;
+    border-radius: 3px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.custom-slider:hover {
+    opacity: 1;
+}
+
+.custom-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #4de6d9;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid #16213e;
+}
+
+#speed-value {
+    color: #4de6d9;
+    min-width: 40px;
+    text-align: center;
+}
+
+#photo-counter {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #4de6d9;
+    font-size: 14px;
+    background: rgba(22, 33, 62, 0.9);
+    padding: 4px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+#controls {
+    /* Add this to existing #controls */
+    position: fixed;
+    bottom: 20px;
+    /* ... rest of your existing styles ... */
+    padding-bottom: 25px; /* Add more space for counter */
 }
