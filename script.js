@@ -459,5 +459,6 @@ function enableImageControls(container) {
 // Initialize on both image containers
 document.querySelectorAll('.image-container').forEach(enableImageControls);
 
+  
 // Start initialization
 loadImages();

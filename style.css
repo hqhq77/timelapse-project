@@ -195,3 +195,42 @@ body {
     object-fit: cover;
     pointer-events: none;
 }
+
+#zoom-help {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(22, 33, 62, 0.9);
+    border-radius: 8px;
+    padding: 12px;
+    color: #4de6d9;
+    max-width: 250px;
+    transition: all 0.3s ease;
+    cursor: help;
+}
+
+.help-icon {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    height: 18px;
+    width: 18px;
+}
+
+.help-text {
+    display: none;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.help-item {
+    margin: 6px 0;
+    padding-left: 10px;
+    border-left: 2px solid #4de6d9;
+}
+
+#zoom-help:hover .help-text,
+#zoom-help:active .help-text {
+    display: block;
+}
