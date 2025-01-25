@@ -395,5 +395,69 @@ seekbar.addEventListener('input', () => {
     loadAndShowPair(newIndex);
 });
 
+// Add this zoom/pan functionality
+function enableImageControls(container) {
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let translateX = 0;
+  let translateY = 0;
+  let scale = 1;
+
+  function updateTransform() {
+      container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+  }
+
+  // Mouse controls
+  container.addEventListener('mousedown', (e) => {
+      if (scale === 1) return;
+      isDragging = true;
+      container.classList.add('dragging');
+      startX = e.clientX - translateX;
+      startY = e.clientY - translateY;
+  });
+
+  document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      translateX = e.clientX - startX;
+      translateY = e.clientY - startY;
+      updateTransform();
+  });
+
+  document.addEventListener('mouseup', () => {
+      isDragging = false;
+      container.classList.remove('dragging');
+  });
+
+  // Zoom controls
+  container.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const rect = container.getBoundingClientRect();
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+      
+      const delta = e.deltaY > 0 ? 0.9 : 1.1;
+      const newScale = Math.min(Math.max(scale * delta, 1), 5);
+
+      // Adjust position to keep zoom centered
+      translateX = offsetX - (offsetX - translateX) * (newScale / scale);
+      translateY = offsetY - (offsetY - translateY) * (newScale / scale);
+      scale = newScale;
+      
+      updateTransform();
+  });
+
+  // Double-click to reset
+  container.addEventListener('dblclick', () => {
+      translateX = 0;
+      translateY = 0;
+      scale = 1;
+      updateTransform();
+  });
+}
+
+// Initialize on both image containers
+document.querySelectorAll('.image-container').forEach(enableImageControls);
+
 // Start initialization
 loadImages();

@@ -12,7 +12,7 @@ body {
 #image-container {
     display: flex;
     width: 100%;
-    max-width: 1500px;
+    max-width: 1200px;
     margin: auto;
     gap: 20px;
 }
@@ -23,7 +23,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    height: 500px;
+    height: 400px;
 }
 
 .image-box img {
@@ -155,7 +155,7 @@ body {
 
 #photo-counter {
     position: absolute;
-    top: -30px;
+    top: -15px;
     left: 50%;
     transform: translateX(-50%);
     color: #4de6d9;
@@ -172,4 +172,26 @@ body {
     bottom: 20px;
     /* ... rest of your existing styles ... */
     padding-bottom: 25px; /* Add more space for counter */
+}
+
+/* Add these styles */
+.image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    transform-origin: 0 0;
+    transition: transform 0.1s ease-out;
+}
+
+.image-container.dragging {
+    cursor: grabbing;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
 }
